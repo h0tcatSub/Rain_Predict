@@ -25,9 +25,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 alpha = np.average((alpha["日照時間"] + alpha["全天日射量"]) + alpha["平均雲量"])
 reg = MLPRegressor(random_state=0)
 
-year = int(sys.argv[1])
+year  = int(sys.argv[1])
 month = int(sys.argv[2])
-day = int(sys.argv[3])
+day   = int(sys.argv[3])
 max_temperature = float(sys.argv[4])
 min_temperature = float(sys.argv[5])
 solar_time      = float(sys.argv[6])
@@ -49,7 +49,7 @@ result = reg.predict(predict_data)
 result = result[0]
 
 score_train  = reg.score(X_train, y_train)
-score_test  = reg.score(X_test, y_test)
+score_test   = reg.score(X_test, y_test)
 print()
 print(f"Model Score (Train) : {score_train}")
 print(f"Model Score (Test)  : {score_test}")
