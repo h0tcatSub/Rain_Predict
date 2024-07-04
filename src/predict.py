@@ -17,13 +17,15 @@ X["year"]  = np.sin(X["year"])
 X["month"] = np.sin(X["month"])
 X["day"]   = np.sin(X["day"])
 
-alpha = df[["日照時間", "全天日射量", "平均雲量"]]
+alpha = df[["日照時間", "全天日射量", "平均気温", "平均雲量"]]
 
 X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=.3, random_state=0)
 
-alpha = np.average((alpha["日照時間"] + alpha["全天日射量"]) + alpha["平均雲量"])
-reg = MLPRegressor(random_state=0)
+alpha = np.average((alpha["日照時間"] + alpha["全天日射量"]) * (alpha["平均気温"] + alpha["平均雲量"]))
+reg = MLPRegressor(alpha =alpha,
+                   verbose=True,
+                   random_state=0)
 
 year  = int(sys.argv[1])
 month = int(sys.argv[2])
