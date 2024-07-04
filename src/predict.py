@@ -23,7 +23,7 @@ X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=.3, random_state=0)
 
 alpha = np.average((alpha["日照時間"] + alpha["全天日射量"]) * (alpha["平均気温"] + alpha["平均雲量"]))
-reg = MLPRegressor(alpha =alpha,
+reg = MLPRegressor(alpha=alpha,
                    verbose=True,
                    random_state=0)
 
